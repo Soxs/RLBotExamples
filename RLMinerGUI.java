@@ -1,5 +1,3 @@
-package net.runelite.client.pluginsplus.soxs.rlbot.scripts.mining;
-
 import javax.swing.*;
 import java.awt.*;
 
