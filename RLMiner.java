@@ -9,7 +9,7 @@ import java.awt.*;
 
 @RLScriptDescriptor(
         name = "RLMiner",
-        description = "A miner that supports banking and power-levelling. Can fill inventory or mine sceneX drop sceneX.",
+        description = "A miner that supports banking and power-levelling. Can fill inventory or mine X drop X.",
         version = 0.01,
         author = "Soxs",
         requiresAuthentication = true
