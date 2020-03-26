@@ -60,16 +60,19 @@ public class RLMiner extends RLScript {
     }
 
     private void findAndMineOre() {
-        selectedOre = APIUtils.getNearestObject(context, getGameObjects(ORE_IDS)); //Get the closest tree.
-        oreArea = selectedOre.getClickbox(); //Save the click box of the tree so we can paint our target.
-
-        if (selectedOre != null && APIUtils.isPlayerIdle(context)) { //Ensure the tree is valid, and only proceed if our player is idle.
-            Mouse.moveAndClick(this, APIUtils.getPointInObject(selectedOre)); //Move the mouse and click the tree.
+        GameObject[] ores = getGameObjects(ORE_IDS);
+        if (ores.length > 0) {
+            selectedOre = APIUtils.getNearestObject(context, ores); //Get the closest tree.
+            if (selectedOre != null && APIUtils.isPlayerIdle(context)) { //Ensure the tree is valid, and only proceed if our player is idle.
+                oreArea = selectedOre.getClickbox(); //Save the click box of the tree so we can paint our target.
+                Mouse.seekAndClickTileObject(this, selectedOre); //Move the mouse and click the tree.
+            }
         }
         else {
             if (Utils.randInt(0, 100) > Utils.randInt(55, 65))
                 Mouse.moveToSuitableRestArea(this);
         }
+        Mouse.sleepWhileMouseActive(this);
     }
 
     private void dropOres() {
